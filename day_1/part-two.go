@@ -8,13 +8,6 @@ import (
 	"strconv"
 )
 
-func sum(array []int) int {
-	sum := 0
-	for _, num := range array {
-		sum += num
-	}
-	return sum
-}
 func main() {
 	var prevSum int
 	var currSum int
@@ -31,12 +24,13 @@ func main() {
 	for i := 0; i < 3; i++ {
 		sc.Scan()
 		num, err := strconv.Atoi(sc.Text())
-		window = append(window, num)
 		if err != nil {
 			log.Fatal(err)
 		}
+		window = append(window, num)
+		currSum += num
 	}
-	currSum = sum(window)
+
 	for sc.Scan() {
 		oldNum = window[0]
 		newNum, err = strconv.Atoi(sc.Text())
